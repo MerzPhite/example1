@@ -72,6 +72,22 @@
     </style>
 </head>
 <body class="min-h-screen">
+    <!-- Promo Banner -->
+    <div id="promo-banner" class="bg-[#1B6C6D] text-white py-3 relative">
+        <div class="container mx-auto px-4 text-center">
+            <p class="font-semibold animate-pulse">
+                🎉 Book your first treatment and get 20% off. Limited time only! 🎉
+            </p>
+            <button 
+                onclick="document.getElementById('promo-banner').style.display='none'" 
+                class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white hover:text-[#C2E6E3]"
+                aria-label="Close banner"
+            >
+                ✕
+            </button>
+        </div>
+    </div>
+
     <!-- Add noise texture div -->
     <div class="noise-texture"></div>
 
@@ -117,9 +133,7 @@
         
         <!-- Content (with relative positioning to appear above video) -->
         <div class="container mx-auto px-4 text-center outline-black relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-black">
-                Professional Sports Massage Therapy
-            </h1>
+            <img src="RWA.jpeg" alt="Restore with Angel" class="mx-auto mb-6 h-48 md:h-96 w-auto rounded-full">
             <p class="text-xl md:text-2xl mb-8 font-bold text-gray-700">
                 Specialized treatments for athletes and active individuals
             </p>
@@ -136,9 +150,31 @@
 
     <main class="container mx-auto px-4">
         <!-- Benefits Section -->
+
+        
+
+    <!-- Professional Qualifications Section -->
+    <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
+        <h2 class="text-3xl font-bold mb-10 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
+            Professional Qualifications & Insurance
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6 text-gray-600">
+                <p>As a professional member of the <a href="https://www.fht.org.uk" class="underline">Federation of Holistic Therapists (FHT)</a>, I am fully qualified and insured to provide Sports Massage Therapy. Many private healthcare providers recognise FHT membership, which means you may be able to claim back the cost of your treatments with me through your health insurance. I recommend checking directly with your insurer to confirm your eligibility and any specific requirements for reimbursement.</p>
+                
+                <p>I'm a fully qualified Level 3 and Level 4 Sports Massage Therapist, having completed my training with the highly regarded Cotswold Academy in Cirencester (2022). My qualifications allow me to assess and treat a wide range of musculoskeletal issues, from sports-related injuries to everyday aches and tension. With advanced techniques and a strong understanding of anatomy, I tailor each treatment to support recovery, enhance performance, and promote overall wellbeing.</p>
+            </div>
+            <div class="relative">
+                <img src="massage.jpeg" alt="Professional sports massage treatment" class="rounded-lg shadow-lg w-full object-cover transform hover:scale-105 transition-transform duration-300" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    
         <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
             <h2 class="text-3xl font-bold mb-10 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
-                Why Choose Our Sports Massage?
+                Why Choose My Sports Massage?
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
@@ -161,12 +197,13 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div class="flex items-center mb-4">
-                        <h3 class="text-xl font-semibold ml-4">Expert Techniques</h3>
+                        <h3 class="text-xl font-semibold ml-4">Restore and relaxtion</h3>
                     </div>
-                    <p class="text-gray-600">Specialized sports massage techniques delivered by qualified therapists.</p>
+                    <p class="text-gray-600">Stress relief, unwind and pregnancy.</p>
                 </div>
             </div>
         </section>
+
 
         <!-- Services Section -->
         <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
@@ -297,6 +334,15 @@
                 </div>
                 <div class="border-b border-gray-200 pb-4">
                     <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">What is your payment policy?</span>
+                        <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-600">To secure your booking time, a 20% deposit is required upfront with the remainder paid once your treatment has finished.</p>
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
                         <span class="text-lg font-semibold">What is your cancellation policy?</span>
                         <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
@@ -315,7 +361,7 @@
                 <!-- Contact Info -->
                 <div class="w-full max-w-xs">
                     <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
-                    <p class="mb-2">📱 07123 456789</p>
+                    <p class="mb-2">📱 07923 169525</p>
                     <p class="mb-2">📧 info@restorewithangel.com</p>
                     <p class="mb-2">📍 The Clique,<BR>
                              100 Reading Road, <br>
@@ -337,7 +383,6 @@
                         <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">Book Appointment</a></li>
                         <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">Services</a></li>
                         <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">FAQs</a></li>
-                        <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">Privacy Policy</a></li>
                     </ul>
                 </div>
 
@@ -359,46 +404,7 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <div id="roastModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
-        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <div class="mt-3 text-center">
-                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-pink-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-pink-600">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-5">Book Your Treatment</h3>
-                <div class="mt-2 px-7 py-3">
-                    <p class="text-sm text-purple-600">
-                        Begin your journey to relaxation and rejuvenation
-                    </p>
-                    <br>
-                    <p class="text-gray-600">
-                        Step 1: Select your preferred treatment time below<br><br>
-                        Step 2: Complete your secure payment<br><br>
-                        Step 3: Prepare for your session with our <span class="text-purple-600 hover:underline cursor-pointer">pre-treatment guide</span>
-                    </p>
-                </div>
-                <div class="items-center px-4 py-3">
-                    <button class="px-4 py-2 bg-purple-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                    data-cal-link="leo-richardson-buomhi/30min"
-                    data-cal-namespace="30min"
-                    data-cal-config='{"layout":"month_view"}'>
-                        Book Massage Treatment
-                    </button>
-                </div>
-                <div class="items-center px-4 py-3">
-                    <button class="px-4 py-2 bg-purple-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                    data-cal-link="leo-richardson-buomhi/nails"
-                    data-cal-namespace="nails"
-                    data-cal-config='{"layout":"month_view"}'>
-                        Book Nail Treatment
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -519,20 +525,6 @@
         });
     </script>
 
-    <!-- Cal floating-popup embed code begins -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "30min", {origin:"https://cal.com"});
-
-      
-      Cal.ns["30min"]("ui", {"styles":{"branding":{"brandColor":"#f97316"}},"hideEventTypeDetails":true,"layout":"month_view"});
-    </script>
-    <!-- Cal floating-popup embed code ends -->
-
-    <script type="text/javascript">
-        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-        Cal("init", "nails", {origin:"https://cal.com"});
-        Cal.ns.nails("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
+    
 </body>
 </html>
