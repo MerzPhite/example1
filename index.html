@@ -147,9 +147,7 @@
                id="roastButton" 
                class="text-lg font-bold px-8 py-6 bg-[#1B6C6D] hover:bg-[#155859] text-white rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center w-fit mx-auto">
                 Book Your Treatment
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-6 w-6 animate-flicker">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                </svg>
+                
             </a>
         </div>
     </section>
@@ -511,59 +509,7 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const roastButton = document.getElementById('roastButton');
-            
-            roastButton.addEventListener('mouseenter', () => {
-                const interval = setInterval(() => {
-                    createBubble(roastButton);
-                }, 100);
-                
-                roastButton.addEventListener('mouseleave', () => {
-                    clearInterval(interval);
-                }, { once: true });
-            });
-            
-            function createBubble(button) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                
-                // Create SVG bubble
-                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                svg.setAttribute("viewBox", "0 0 24 24");
-                svg.setAttribute("width", "24");
-                svg.setAttribute("height", "24");
-                svg.setAttribute("fill", "none");
-                svg.setAttribute("stroke", "#1B6C6D");
-                svg.setAttribute("stroke-width", "2");
-                
-                const circle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                circle1.setAttribute("cx", "12");
-                circle1.setAttribute("cy", "12");
-                circle1.setAttribute("r", "10");
-                
-                const circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                circle2.setAttribute("cx", "12");
-                circle2.setAttribute("cy", "12");
-                circle2.setAttribute("r", "6");
-                
-                svg.appendChild(circle1);
-                svg.appendChild(circle2);
-                bubble.appendChild(svg);
-                
-                const rect = button.getBoundingClientRect();
-                const startX = rect.left + (Math.random() * rect.width);
-                
-                bubble.style.left = startX + 'px';
-                bubble.style.top = rect.bottom + 'px';
-                
-                document.body.appendChild(bubble);
-                
-                bubble.addEventListener('animationend', () => {
-                    bubble.remove();
-                });
-            }
-        });
+        
     </script>
 
     
