@@ -121,9 +121,9 @@
             playsinline
             id="massageVideo"
         >
-            <source src="massage.mp4" type="video/mp4">
+            <source src="avid.mp4" type="video/mp4">
         </video>
-        <video 
+        <!--  <video 
             class="absolute inset-0 w-full h-full object-cover opacity-0 video-fade"
             autoplay 
             muted 
@@ -132,7 +132,7 @@
             id="nailsVideo"
         >
             <source src="sm.mp4" type="video/mp4">
-        </video>
+        </video> -->
         
         <!-- Content (with relative positioning to appear above video) -->
         <div class="container mx-auto px-4 text-center outline-black relative z-10">
@@ -223,6 +223,7 @@
                             <p class="text-sm text-gray-500">1 hour</p>
                         </div>
                     </div>
+                    <video src="avid.mp4" alt="Tension Release Massage Treatment" class="w-full h-48 object-cover rounded-lg mb-4" autoplay muted loop playsinline></video>
                     <p class="text-gray-600">Sports massage is a specialised form of massage therapy designed to enhance athletic performance and support individuals with active lifestyles. Whether you're a professional athlete, a dedicated gym-goer, or someone with a physically demanding job, this treatment can help you achieve your goals and maintain optimal physical condition.</p>
                     <p class="text-gray-600 mt-2">Involves stretching, muscle energy technique, myofascial release and trigger points.</p>
                 </div>
@@ -308,7 +309,7 @@
                     </p>
                 </div>
             </div>
-            <p class="text-xl text-center mt-8 font-semibold text-purple-600">
+            <p class="text-xl text-center mt-8 font-semibold text-[#1B6C6D]">
                 Ready to transform your well-being? Book your treatment today.
             </p>
         </section>
@@ -386,7 +387,7 @@
                     <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">Book Appointment</a></li>
-                        <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">Services</a></li>
+                        <li><a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ" class="hover:text-[#C2E6E3] transition-colors">Services</a></li>
                         <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">FAQs</a></li>
                     </ul>
                 </div>
@@ -441,36 +442,47 @@
             icon.classList.toggle('rotate-180');
         }
 
-        // Video switching logic
         document.addEventListener('DOMContentLoaded', () => {
-            const massageVideo = document.getElementById('massageVideo');
-            const nailsVideo = document.getElementById('nailsVideo');
-            let showingMassage = true;
+            const video = document.getElementById('massageVideo');
+            // Define your segments as [start, end] in seconds
+            const segments = [
+                [0, 4],
+                [6, 9],
+                [10, 14],
+                [25, 28]
+            ];
+            let currentSegment = 0;
 
-            function switchVideos() {
-                if (showingMassage) {
-                    massageVideo.style.opacity = '0';
-                    nailsVideo.style.opacity = '0.3';
-                } else {
-                    massageVideo.style.opacity = '0.3';
-                    nailsVideo.style.opacity = '0';
-                }
-                showingMassage = !showingMassage;
-            }
+            // When the video is ready, jump to the first segment
+            video.addEventListener('loadedmetadata', () => {
+                video.currentTime = segments[0][0];
+                video.play();
+            });
 
-            // Switch videos every 5 seconds
-            setInterval(switchVideos, 5000);
-
-            // Ensure videos start at beginning when they become visible
-            massageVideo.addEventListener('transitionend', () => {
-                if (massageVideo.style.opacity === '0') {
-                    massageVideo.currentTime = 0;
+            // On time update, check if we've reached the end of the current segment
+            video.addEventListener('timeupdate', () => {
+                if (video.currentTime >= segments[currentSegment][1]) {
+                    // Move to the next segment, or loop back to the first
+                    currentSegment = (currentSegment + 1) % segments.length;
+                    video.currentTime = segments[currentSegment][0];
+                    video.play();
                 }
             });
 
-            nailsVideo.addEventListener('transitionend', () => {
-                if (nailsVideo.style.opacity === '0') {
-                    nailsVideo.currentTime = 0;
+            // Optional: If the user manually seeks, snap to the start of the nearest segment
+            video.addEventListener('seeking', () => {
+                let found = false;
+                for (let i = 0; i < segments.length; i++) {
+                    if (video.currentTime >= segments[i][0] && video.currentTime < segments[i][1]) {
+                        currentSegment = i;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    // If not in any segment, jump to the start of the first segment
+                    currentSegment = 0;
+                    video.currentTime = segments[0][0];
                 }
             });
         });
