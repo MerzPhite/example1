@@ -75,13 +75,16 @@
         #mobileLogo {
             transition: opacity 0.5s, max-height 0.5s;
             opacity: 1;
-            max-height: 40px; /* or whatever fits your design */
+            max-height: 80px; /* Increased from 40px */
             overflow: hidden;
             display: block;
+            padding-bottom: 8px; /* Add a bit of space for descenders */
+            padding-right: 8px; /* Add a bit of space for descenders */
         }
         #mobileLogo.hide {
             opacity: 0;
             max-height: 0;
+            padding-bottom: 0;
         }
     </style>
 </head>
@@ -108,7 +111,7 @@
     <!-- Sticky Header -->
     <header class="sticky top-0 z-50 w-full bg-[#1B6C6D] shadow-md outline-black border-b-2 border-white">
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
-            <a href="#" class="elegant-text text-white mb-2 md:mb-0">
+            <a href="#" class="elegant-text text-white mb-2 md:mb-2">
                 <span class="block md:hidden transition-all duration-500 ease-in-out" id="mobileLogo">Restore with Angel</span>
               <!--   <span class="hidden md:block">Restore with Angel</span> -->
             </a>
@@ -155,7 +158,7 @@
                 Specialized treatments for athletes and active individuals
             </p>
             <p class="text-xl md:text-2xl mb-8 font-bold text-gray-700">
-                English and French speaking
+                Parlant anglais et français
             </p>
             <a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ" 
                id="roastButton" 
