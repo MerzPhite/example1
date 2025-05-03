@@ -72,6 +72,17 @@
         html {
             scroll-behavior: smooth;
         }
+        #mobileLogo {
+            transition: opacity 0.5s, max-height 0.5s;
+            opacity: 1;
+            max-height: 40px; /* or whatever fits your design */
+            overflow: hidden;
+            display: block;
+        }
+        #mobileLogo.hide {
+            opacity: 0;
+            max-height: 0;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -98,7 +109,7 @@
     <header class="sticky top-0 z-50 w-full bg-[#1B6C6D] shadow-md outline-black border-b-2 border-white">
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
             <a href="#" class="elegant-text text-white mb-2 md:mb-0">
-                <span class="block md:hidden" id="mobileLogo">Restore with Angel</span>
+                <span class="block md:hidden transition-all duration-500 ease-in-out" id="mobileLogo">Restore with Angel</span>
                 <span class="hidden md:block">Restore with Angel</span>
             </a>
             <!--  <p class="text-center font-bold text-white mb-2 md:mb-0">Enhance Performance. Reduce Pain. Speed Recovery.</p> -->
@@ -142,6 +153,9 @@
             <img src="RWA.jpeg" alt="Restore with Angel" class="mx-auto mb-6 h-48 md:h-96 w-auto rounded-full">
             <p class="text-xl md:text-2xl mb-8 font-bold text-gray-700">
                 Specialized treatments for athletes and active individuals
+            </p>
+            <p class="text-xl md:text-2xl mb-8 font-bold text-gray-700">
+                English and French speaking
             </p>
             <a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ" 
                id="roastButton" 
@@ -289,7 +303,29 @@
                     </div>
                     <p class="text-gray-600">Full body treatment head to toe with aromatherapy oils. With medium to light pressure to help you switch off and relax. It improves your circulation and blood flow, so your organs and skin get more oxygen; aiding with lymphatic drainage.</p>
                 </div>
+
+                <!-- Restore Relaxing Soft Tissue -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-semibold text-[#1B6C6D]">Restore Lymphatic Drainage</h3>
+                        <div class="text-right">
+                            <span class="font-semibold text-lg">£60</span>
+                            <p class="text-sm text-gray-500">1 hour</p>
+                        </div>
+                    </div>
+                    <div class="relative mb-4">
+                        <div class="absolute top-2 left-2 bg-[#1B6C6D] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
+                            20% off first booking
+                        </div>
+                        <img src="aneck.jpeg" alt="Tension Release Massage Treatment" class="w-full h-48 object-cover rounded-lg mb-4">
+                    </div>
+                    <p class="text-gray-600">An energising and invigorating treatment designed to stimulate the lymphatic system and promote detoxification. This session begins with gentle lymphatic pumping techniques to encourage fluid movement and boost circulation, followed by a more dynamic remodelling massage focused on breaking down fatty deposits and improving the texture of the interstitial tissue.
+                        Perfect if you're concerned about areas such as the thighs, hips, tummy, or back of the arms — whether it's cellulite, puffiness, or stubborn weight.
+                        Feel lighter, refreshed, and more confident in your skin.</p>
+                </div>
             </div>
+
+            
 
             <!-- Book Now Button -->
             <div class="text-center mt-12">
@@ -303,6 +339,8 @@
                 </a>
             </div>
         </section>
+
+
 
         <!-- Is this you? Section -->
         <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
@@ -518,9 +556,9 @@
         document.addEventListener('scroll', function() {
             const mobileLogo = document.getElementById('mobileLogo');
             if (window.scrollY > 50) {
-                mobileLogo.textContent = '';
+                mobileLogo.classList.add('hide');
             } else {
-                mobileLogo.textContent = 'Restore with Angel';
+                mobileLogo.classList.remove('hide');
             }
         });
     </script>
