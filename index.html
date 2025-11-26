@@ -1,571 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Massage Therapy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Allura&display=swap" rel="stylesheet">
-    <style>
-        @keyframes flicker {
-            0% { opacity: 0.8; transform: rotate(-1deg); }
-            25% { opacity: 1; transform: rotate(1deg) scale(1.05); }
-            50% { opacity: 0.9; transform: rotate(-1deg); }
-            75% { opacity: 1; transform: rotate(1deg) scale(1.05); }
-            100% { opacity: 0.8; transform: rotate(-1deg); }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resolve Sports Therapy | Sports Injury Clinic Wokingham</title>
+  <meta name="description" content="Resolve Sports Therapy is an injury clinic in Winnersh, Wokingham specialising in diagnosis, rehabilitation and prevention of sports injuries and occupational pain." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#0d9488',
+              light: '#5eead4',
+              dark: '#0f766e'
+            },
+            night: '#020617'
+          }
         }
-        .animate-flicker {
-            animation: flicker 1.5s infinite;
-            transform-origin: center;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #C2E6E3;  /* Fallback color */
-            background-image: none;  /* Remove the previous pattern temporarily */
-            min-height: 100vh;
-            position: relative;
-        }
-        .video-fade {
-            transition: opacity 1s ease-in-out;
-        }
-        .bubble {
-            position: fixed;
-            font-size: 20px;
-            animation: float 3s linear forwards;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(-20px) translateX(0) scale(1);
-                opacity: 0.7;
-            }
-            50% {
-                transform: translateY(50vh) translateX(50px) scale(1.2);
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(100vh) translateX(100px) scale(0.5);
-                opacity: 0;
-            }
-        }
-
-        /* Add noise texture */
-        .noise-texture {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM+I2EfhA94iG3L7uKrR+GdWD73ydlIB+6hgref1QTlmgmbM3/LeX5GI1Ux1RWpgxpLuZ2+I+IjzZ8wqE4nilvQdkUdfhzI5QDWy+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W/Rgjda1iqQcOJu2WW+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP+ttrq+AsWpFG2awvsuOqbipWHgtuvuaAE+A1Z/7gC9hesnr+7wqCwG8c5yAg3AL1fm8T9AZtp/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjs6XXOMedYm5xH2YxpV2tc0Ro2jJfxC50ApuxGob7lMsxfTbeUv07TyYxpeLucEH1gNd4IKH2LAg5TdVhlCafZvpskfncCfx8pOhJzd76bJWeYFnFciwcYfubRc12Ip/ppIhA1/mSZ/RxjFDrJC5xifFjJpY2Xl5zXdguFqYyTR1zSp1Y9p+tktDYYSNflcxI0iyO4TPBdlRcpeqjK/piF5bklq77VSEaA+z8qmJTFzIWiitbnzR794USKBUaT0NTEsVjZqLaFVqJoPN9ODG70IPbfBHKK+/q/AWR0tJzYHRULOa4MP+W/HfGadZUbfw177G7j/OGbIs8TahLyynl4X4RinF793Oz+BU0saXtUHrVBFT/DnA3ctNPoGbs4hRIjTok8i+algT1lTHi4SxFvONKNrgQFAq2/gFnWMXgwffgYMJpiKYkmW3tTg3ZQ9Jq+f8XN+A5eeUKHWvJWJ2sgJ1Sop+wwhqFVijqWaJhwtD8MNlSBeWNNWTa5Z5kPZw5+LbVT99wqTdx29lMUH4OIG/D86ruKEauBjvH5xy6um/Sfj7ei6UUVk4AIl3MyD4MSSTOFgSwsH/QJWaQ5as7ZcmgBZkzjjU1UrQ74ci1gWBCSGHtuV1H2mhSnO3Wp/3fEV5a+4wz//6qy8JxjZsmxxy5+4w9CDNJY09T072iKG0EnOS0arEYgXqYnXcYHwjTtUNAcMelOd4xpkoqiTYICWFq0JSiPfPDQdnt+4/wuqcXY47QILbgAAAABJRU5ErkJggg==');
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .elegant-text {
-            font-family: 'Allura', cursive;
-            font-size: 2.5rem; /* Slightly larger to suit the font style */
-            letter-spacing: 1px;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        #mobileLogo {
-            transition: opacity 0.5s, max-height 0.5s;
-            opacity: 1;
-            max-height: 80px; /* Increased from 40px */
-            overflow: hidden;
-            display: block;
-            padding-bottom: 8px; /* Add a bit of space for descenders */
-            padding-right: 8px; /* Add a bit of space for descenders */
-        }
-        #mobileLogo.hide {
-            opacity: 0;
-            max-height: 0;
-            padding-bottom: 0;
-        }
-    </style>
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #020617;
+      color: #e2e8f0;
+    }
+    .nav-glass {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .section-shell {
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.85));
+    }
+    .gradient-border {
+      position: relative;
+      border-radius: 28px;
+      background: rgba(2, 6, 23, 0.65);
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(94, 234, 212, 0.8), rgba(45, 212, 191, 0.4), rgba(56, 189, 248, 0.7));
+      -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .gradient-border>* {
+      position: relative;
+      z-index: 1;
+    }
+    .floating-card {
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-14px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 480px;
+      opacity: 1;
+    }
+    .testimonial-card {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    .testimonial-card.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 12px;
+      z-index: 1100;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    #whatsapp-float:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
+    }
+    @media (min-width: 768px) {
+      #whatsapp-float {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="min-h-screen">
-    <!-- Promo Banner -->
-    <div id="promo-banner" class="bg-[#1B6C6D] text-white py-3 relative">
-        <div class="container mx-auto px-4 text-center">
-            <p class="font-semibold animate-pulse">
-                🎉 Book your first treatment and get 20% off. Limited time only! 🎉
-            </p>
-            <button 
-                onclick="document.getElementById('promo-banner').style.display='none'" 
-                class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white hover:text-[#C2E6E3]"
-                aria-label="Close banner"
-            >
-                ✕
-            </button>
-        </div>
-    </div>
+<body class="bg-night text-slate-100">
+  <div class="relative min-h-screen overflow-hidden">
+    <img src="room2.jpeg" alt="Resolve Sports Therapy clinic room" class="absolute inset-0 h-full w-full object-cover object-center brightness-[.7]" />
+    <div class="absolute inset-0 bg-gradient-to-br from-night/95 via-night/80 to-slate-900/75"></div>
+    <div class="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full bg-brand/30 blur-3xl"></div>
 
-    <!-- Add noise texture div -->
-    <div class="noise-texture"></div>
-
-    <!-- Sticky Header -->
-    <header class="sticky top-0 z-50 w-full bg-[#1B6C6D] shadow-md outline-black border-b-2 border-white">
-        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
-            <a href="#" class="elegant-text text-white mb-2 md:mb-2">
-                <span class="block md:hidden transition-all duration-500 ease-in-out" id="mobileLogo">Restore with Angel</span>
-              <!--   <span class="hidden md:block">Restore with Angel</span> -->
-            </a>
-            <!--  <p class="text-center font-bold text-white mb-2 md:mb-0">Enhance Performance. Reduce Pain. Speed Recovery.</p> -->
-            <a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ" 
-               class="header-roast-button text-sm font-bold px-4 py-3 bg-[#C2E6E3] hover:bg-[#a3c5c2] text-[#2E2E2E] rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center border-white border-2">
-                Book Now
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-3 w-3 animate-flicker">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <circle cx="12" cy="12" r="6"></circle>
-                </svg>
-            </a>
+    <header class="fixed left-0 top-0 z-50 w-full">
+      <nav class="nav-glass flex w-full items-center justify-between gap-4 rounded-none border-b border-white/10 px-6 py-4 text-sm shadow-xl">
+        <a href="https://resolve-sports-therapy.uk2.cliniko.com/bookings" target="_blank" rel="noopener" class="rounded-full bg-brand px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-brand-light hover:text-night">Book now</a>
+        <div class="flex items-center gap-3">
+          <button id="menu-toggle" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand">Menu</button>
         </div>
+      </nav>
+      <div id="menu-panel" class="fixed right-6 top-20 hidden w-56 rounded-2xl border border-white/10 bg-night/90 p-4 text-sm shadow-2xl">
+        <nav class="flex flex-col gap-3 text-slate-200">
+          <a href="#services" data-scroll class="hover:text-white">What we do</a>
+          <a href="#about" data-scroll class="hover:text-white">About me</a>
+          <a href="#approach" data-scroll class="hover:text-white">Approach</a>
+          <a href="#gallery" data-scroll class="hover:text-white">Gallery</a>
+          <a href="#testimonials" data-scroll class="hover:text-white">Reviews</a>
+          <a href="#pricing" data-scroll class="hover:text-white">Pricing</a>
+          <a href="#location" data-scroll class="hover:text-white">Find us</a>
+          <a href="#faq" data-scroll class="hover:text-white">FAQ</a>
+          <a href="#contact" data-scroll class="hover:text-white">Contact</a>
+        </nav>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="w-full bg-white py-16 mb-20 border-b-2 border-white relative overflow-hidden">
-        <!-- Video Background -->
-        <video 
-            class="absolute inset-0 w-full h-full object-cover opacity-30 video-fade"
-            autoplay 
-            muted 
-            loop 
-            playsinline
-            id="massageVideo"
-        >
-            <source src="avid.mp4" type="video/mp4">
-        </video>
-        <!--  <video 
-            class="absolute inset-0 w-full h-full object-cover opacity-0 video-fade"
-            autoplay 
-            muted 
-            loop 
-            playsinline
-            id="nailsVideo"
-        >
-            <source src="sm.mp4" type="video/mp4">
-        </video> -->
-        
-        <!-- Content (with relative positioning to appear above video) -->
-        <div class="container mx-auto px-4 text-center outline-black relative z-10">
-            <img src="RWA.jpeg" alt="Restore with Angel" class="mx-auto mb-6 h-48 md:h-96 w-auto rounded-full">
-            <p class="text-xl md:text-2xl mb-8 font-bold text-gray-700">
-                Specialized treatments for athletes and active individuals
-            </p>
-            <p class="text-xl md:text-2xl mb-8 font-bold text-gray-700">
-                Parlant anglais et français
-            </p>
-            <a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ" 
-               id="roastButton" 
-               class="text-lg font-bold px-8 py-6 bg-[#1B6C6D] hover:bg-[#155859] text-white rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center w-fit mx-auto">
-                Book Your Treatment
-                
-            </a>
+    <section id="top" class="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-24 lg:pt-32">
+      <div class="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 w-fit">
+            <img src="resolvelogo.jpeg" alt="Resolve Sports Therapy logo" class="h-20 w-20 rounded-full object-contain" />
+            <p class="text-xs uppercase tracking-[0.4em] text-slate-200">Resolve Sports Therapy</p>
+          </div>
+          <div class="h-6"></div>
+          <p class="text-xs uppercase tracking-[0.3em] text-brand-light">Sports injury clinic - Winnersh, Wokingham</p>
+          <h1 class="mt-6 text-4xl font-semibold leading-tight text-white sm:text-5xl">Return to sport stronger, pain-free and confident.</h1>
+          <p class="mt-6 text-lg text-slate-200">Resolve Sports Therapy specialises in the diagnosis, rehabilitation and prevention of sports injuries and occupational pain including joint, back and neck issues. Every session blends evidence-led hands-on therapy with purposeful exercise prescription so you can understand your injury, fix it at the root and keep it from coming back.</p>
+          <p class="mt-4 text-lg text-slate-200">From runners and field athletes to people who sit at a desk all day, our clinic in Winnersh provides the treatment, education and accountability needed for pain-free living.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="https://resolve-sports-therapy.uk2.cliniko.com/bookings" target="_blank" rel="noopener" class="rounded-full bg-brand px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-brand-light hover:text-night">Book an appointment</a>
+          </div>
+          <ul class="mt-10 grid gap-4 text-sm text-slate-200 sm:grid-cols-2">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-brand"></span>
+              Relief for running injuries, postural pain, workplace aches and acute issues.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-brand"></span>
+              Education-first care so you understand what to do between sessions.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-brand"></span>
+              Hands-on techniques, mobility resets and strength progressions.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 h-2 w-2 rounded-full bg-brand"></span>
+              Online booking and flexible appointments to fit your training week.
+            </li>
+          </ul>
         </div>
+        <div class="gradient-border p-1">
+          <div class="floating-card flex h-full flex-col justify-between rounded-[22px] bg-slate-900/80 p-8">
+            <div>
+              <p class="text-sm uppercase tracking-widest text-brand-light">Inside the clinic</p>
+              <h2 class="mt-4 text-3xl font-semibold text-white">Your rehab partner</h2>
+              <p class="mt-4 text-slate-200">Expect calm spaces, detailed assessments and goal-led programming built specifically for your sport or lifestyle.</p>
+            </div>
+            <div class="mt-8 overflow-hidden rounded-3xl border border-white/10">
+              <img src="leg5.jpeg" alt="Sports therapist treating a client" class="h-72 w-full object-cover" />
+            </div>
+            <div class="mt-6 flex items-center justify-between rounded-2xl bg-white/5 p-4 text-sm text-slate-200">
+              <div>
+                <p class="text-xs uppercase tracking-widest text-brand-light">Resolve Method</p>
+                <p class="font-semibold text-white">Assess - Treat - Strengthen</p>
+              </div>
+              <img src="plant.jpeg" alt="Therapy room decor" class="h-16 w-16 rounded-2xl object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <main class="relative z-10 -mt-10 space-y-20 bg-gradient-to-b from-night via-night to-slate-950 pb-24">
+    <section class="mx-auto max-w-6xl px-6" id="about">
+      <div class="section-shell p-10">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">About me</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white">Ice, Lead Sports Therapist &amp; Director.</h2>
+            <p class="mt-4 text-slate-300">I’m Ice, the Lead Sports Therapist and Director of Resolve Sports Therapy. After graduating from the University of Winchester with a BSc in Sports Therapy, I set out to build a clinic that treats every client like an athlete, regardless of their background.</p>
+            <p class="mt-4 text-slate-300">Experience across professional sports therapy and osteopathy clinics helped me craft a hands-on, bespoke approach that prioritises individualised plans over cookie-cutter treatment.</p>
+            <p class="mt-4 text-slate-300">Alongside running Resolve, I am the lead therapist at Procision Football Academy and support runners at events such as the Reading Half Marathon, handling everything from pre-event prep to race-day care.</p>
+            <p class="mt-4 text-slate-300">My mission is simple: change the perception that Sports Therapy is only for elite athletes. Everyone deserves to move better, feel stronger and live without nagging pain.</p>
+            <p class="mt-4 text-slate-300">Outside the clinic, you’ll find me training, playing football or golf, hopping on a paddle board, or firing up the BBQ with family and friends. My passion for rehab began with my own academy football injuries, where I learned firsthand how powerful tailored rehab can be.</p>
+          </div>
+          <div class="flex justify-center">
+            <div class="w-full max-w-sm rounded-3xl border border-white/10 bg-white/5 p-1">
+              <div class="overflow-hidden rounded-[28px]">
+                <img src="Ice.jpeg" alt="Ice, lead sports therapist" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <main class="container mx-auto px-4">
-        <!-- Benefits Section -->
-
-        
-
-    <!-- Professional Qualifications Section -->
-    <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
-        <h2 class="text-3xl font-bold mb-10 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
-            Professional Qualifications & Insurance
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="space-y-6 text-gray-600">
-                <p>As a professional member of the <a href="https://www.fht.org.uk" class="underline">Federation of Holistic Therapists (FHT)</a>, I am fully qualified and insured to provide Sports Massage Therapy. Many private healthcare providers recognise FHT membership, which means you may be able to claim back the cost of your treatments with me through your health insurance. I recommend checking directly with your insurer to confirm your eligibility and any specific requirements for reimbursement.</p>
-                
-                <p>I'm a fully qualified Level 3 and Level 4 Sports Massage Therapist, having completed my training with the highly regarded Cotswold Academy in Cirencester (2022). My qualifications allow me to assess and treat a wide range of musculoskeletal issues, from sports-related injuries to everyday aches and tension. With advanced techniques and a strong understanding of anatomy, I tailor each treatment to support recovery, enhance performance, and promote overall wellbeing.</p>
+    <section class="mx-auto max-w-6xl px-6" id="services">
+      <div class="section-shell p-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Sports therapy services</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white">Hands-on treatment, purposeful rehab and long-term prevention.</h2>
+            <p class="mt-4 text-slate-300">Sports Therapy blends manual therapy, movement assessment, mobility drills and strength coaching. It is ideal for athletes but equally powerful for anyone dealing with limited movement or recurring pain from daily life.</p>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center text-xs uppercase tracking-widest text-slate-300">
+            <div>
+              <p class="text-3xl font-semibold text-white">1</p>
+              <p class="mt-2">Assess</p>
             </div>
-            <div class="relative">
-                <img src="massage.jpeg" alt="Professional sports massage treatment" class="rounded-lg shadow-lg w-full object-cover transform hover:scale-105 transition-transform duration-300" />
+            <div>
+              <p class="text-3xl font-semibold text-white">2</p>
+              <p class="mt-2">Reset</p>
             </div>
+            <div>
+              <p class="text-3xl font-semibold text-white">3</p>
+              <p class="mt-2">Strengthen</p>
+            </div>
+          </div>
         </div>
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="relative mb-5 h-48 overflow-hidden rounded-2xl">
+              <img src="leg2.jpeg" alt="Sports massage treatment" class="h-full w-full object-cover object-bottom" />
+              <span class="absolute left-4 top-4 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">Sports Therapy</span>
+            </div>
+            <h3 class="text-2xl font-semibold text-white">Hands-on therapy &amp; massage</h3>
+            <p class="mt-3 text-sm text-slate-200">Reduce pain, calm irritated tissues and restore confidence through soft tissue work, trigger point release and assisted mobility.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>- Ideal for runners, pitch sports, gym goers</li>
+              <li>- Posture and gait analysis included</li>
+              <li>- Education on self-management tools</li>
+            </ul>
+          </article>
+          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="relative mb-5 h-48 overflow-hidden rounded-2xl">
+              <img src="leg3.jpeg" alt="Rehabilitation coaching" class="h-full w-full object-cover" />
+              <span class="absolute left-4 top-4 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">Rehabilitation</span>
+            </div>
+            <h3 class="text-2xl font-semibold text-white">Tailored rehab plans</h3>
+            <p class="mt-3 text-sm text-slate-200">Build strength and mobility that sticks through progressive exercise prescription delivered with clear coaching cues.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>- Joint, back &amp; neck complaints</li>
+              <li>- Return-to-play protocols</li>
+              <li>- Digital plans for home or gym</li>
+            </ul>
+          </article>
+          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div class="relative mb-5 h-48 overflow-hidden rounded-2xl">
+              <img src="leg4.jpeg" alt="Desk worker getting treatment" class="h-full w-full object-cover object-bottom" />
+              <span class="absolute left-4 top-4 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white">Prevention</span>
+            </div>
+            <h3 class="text-2xl font-semibold text-white">Occupational &amp; lifestyle care</h3>
+            <p class="mt-3 text-sm text-slate-200">Release desk-related tension, improve mechanics and learn how to keep flare-ups away while you work, travel or train.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>- Ergonomic advice &amp; movement drills</li>
+              <li>- Recovery strategies for busy weeks</li>
+              <li>- Guidance on long-term habits</li>
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Benefits Section -->
-    
-        <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
-            <h2 class="text-3xl font-bold mb-10 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
-                Why Choose My Sports Massage?
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <h3 class="text-xl font-semibold ml-4">Performance Enhancement</h3>
-                    </div>
-                    <p class="text-gray-600">Improve flexibility, reduce muscle tension, and optimize your athletic performance.</p>
+    <section class="mx-auto max-w-6xl px-6" id="pricing">
+      <div class="section-shell p-10">
+        <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Price list</p>
+        <h2 class="mt-4 text-3xl font-semibold text-white">Transparent pricing for every need.</h2>
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <h3 class="text-xl font-semibold text-white">Individual appointments</h3>
+            <dl class="mt-4 space-y-3 text-sm text-slate-200">
+              <div class="flex items-center justify-between text-base">
+                <dt>Sports massage (30 mins)</dt>
+                <dd class="text-brand-light font-semibold">£30</dd>
+              </div>
+              <div class="flex items-center justify-between text-base">
+                <dt>Sports massage (45 mins)</dt>
+                <dd class="text-brand-light font-semibold">£45</dd>
+              </div>
+              <div class="flex items-center justify-between text-base">
+                <dt>Sports massage (60 mins)</dt>
+                <dd class="text-brand-light font-semibold">£60</dd>
+              </div>
+              <div class="flex items-center justify-between text-base">
+                <dt>Initial injury first appointment (60 mins)</dt>
+                <dd class="text-brand-light font-semibold">£50</dd>
+              </div>
+              <div class="flex items-center justify-between text-base">
+                <dt>Injury assessment follow up (30 mins)</dt>
+                <dd class="text-brand-light font-semibold">£40</dd>
+              </div>
+              <div class="flex items-center justify-between text-base">
+                <dt>Pre-event taping services</dt>
+                <dd class="text-brand-light font-semibold">£15</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <h3 class="text-xl font-semibold text-white">Package deals</h3>
+            <dl class="mt-4 space-y-3 text-sm text-slate-200">
+              <div class="flex flex-col gap-1 rounded-2xl border border-brand/20 bg-night/60 p-4">
+                <div class="flex items-center justify-between text-base">
+                  <dt>Sports massage (30 mins) x5</dt>
+                  <dd class="text-brand-light font-semibold">£120</dd>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <h3 class="text-xl font-semibold ml-4">Injury Prevention</h3>
-                    </div>
-                    <p class="text-gray-600">Regular treatments help prevent sports injuries and maintain muscle health.</p>
+                <p class="text-xs uppercase tracking-widest text-brand-light">Save £30</p>
+              </div>
+              <div class="flex flex-col gap-1 rounded-2xl border border-brand/20 bg-night/60 p-4">
+                <div class="flex items-center justify-between text-base">
+                  <dt>Sports massage (45 mins) x5</dt>
+                  <dd class="text-brand-light font-semibold">£180</dd>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <h3 class="text-xl font-semibold ml-4">Recovery Support</h3>
-                    </div>
-                    <p class="text-gray-600">Accelerate recovery between training sessions and after competitions.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="flex items-center mb-4">
-                        <h3 class="text-xl font-semibold ml-4">Restore and relaxtion</h3>
-                    </div>
-                    <p class="text-gray-600">Stress relief, unwind and pregnancy.</p>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Services Section -->
-        <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
-            <h2 id="treatment-services" class="text-3xl font-bold mb-10 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
-                My Treatment Services
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Restore Sports Massage -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-semibold text-[#1B6C6D]">Restore Sports Massage</h3>
-                        <div class="text-right">
-                            <span class="font-semibold text-lg">£60</span>
-                            <p class="text-sm text-gray-500">1 hour</p>
-                        </div>
-                    </div>
-                    <div class="relative mb-4">
-                        <div class="absolute top-2 left-2 bg-[#1B6C6D] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                            20% off first booking
-                        </div>
-                        <video src="avid.mp4" alt="Tension Release Massage Treatment" class="w-full h-48 object-cover rounded-lg mb-4" autoplay muted loop playsinline></video>
-                    </div>
-                    <p class="text-gray-600">Sports massage is a specialised form of massage therapy designed to enhance athletic performance and support individuals with active lifestyles. Whether you're a professional athlete, a dedicated gym-goer, or someone with a physically demanding job, this treatment can help you achieve your goals and maintain optimal physical condition.</p>
-                    <p class="text-gray-600 mt-2">Involves stretching, muscle energy technique, myofascial release and trigger points.</p>
-                </div>
-
-                <!-- Sports Massage + Dry Cupping -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-semibold text-[#1B6C6D]">Sports Massage + Dry Cupping</h3>
-                        <div class="text-right">
-                            <span class="font-semibold text-lg">£60</span>
-                            <p class="text-sm text-gray-500">1 hour</p>
-                        </div>
-                    </div>
-                    <div class="relative mb-4">
-                        <div class="absolute top-2 left-2 bg-[#1B6C6D] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                            20% off first booking
-                        </div>
-                        <img src="cup.jpeg" alt="Dry Cupping Treatment" class="w-full h-48 object-cover rounded-lg">
-                    </div>
-                    <p class="text-gray-600">A suction force inside the cup pulls your skin upward. This suction force expands and breaks open tiny blood vessels (capillaries) under your skin. Your body replenishes the cupped areas with healthier blood flow and stimulates proper and normal healing at a cellular level.</p>
-                    <p class="text-gray-600 mt-2">You'll have red, round cupping therapy marks that should fade in a week or two. Usually I will be able to apply the cups in one area per session.</p>
-                </div>
-
-                <!-- Restore Tension Release -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-semibold text-[#1B6C6D]">Restore Tension Release</h3>
-                        <div class="text-right">
-                            <span class="font-semibold text-lg">£60</span>
-                            <p class="text-sm text-gray-500">1 hour</p>
-                        </div>
-                    </div>
-                    <div class="relative mb-4">
-                        <div class="absolute top-2 left-2 bg-[#1B6C6D] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                            20% off first booking
-                        </div>
-                        <img src="massage1.jpeg" alt="Tension Release Massage Treatment" class="w-full h-48 object-cover rounded-lg mb-4">
-                    </div>
-                    <p class="text-gray-600">Manual therapy that focuses on treating a wide range of musculoskeletal issues. This includes muscular imbalances, postural problems, chronic pain, and injuries.</p>
-                    <p class="text-gray-600 mt-2">The primary goal of this therapy is to alleviate pain, restore function, and promote overall well-being by addressing the underlying causes of discomfort in the soft tissues, such as muscles, tendons, ligaments, and fascia.</p>
-                </div>
-
-                <!-- Restore Relaxing Soft Tissue -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-semibold text-[#1B6C6D]">Restore Relaxing Soft Tissue</h3>
-                        <div class="text-right">
-                            <span class="font-semibold text-lg">£60</span>
-                            <p class="text-sm text-gray-500">1 hour</p>
-                        </div>
-                    </div>
-                    <div class="relative mb-4">
-                        <div class="absolute top-2 left-2 bg-[#1B6C6D] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                            20% off first booking
-                        </div>
-                        <img src="aneck.jpeg" alt="Tension Release Massage Treatment" class="w-full h-48 object-cover rounded-lg mb-4">
-                    </div>
-                    <p class="text-gray-600">Full body treatment head to toe with aromatherapy oils. With medium to light pressure to help you switch off and relax. It improves your circulation and blood flow, so your organs and skin get more oxygen; aiding with lymphatic drainage.</p>
-                </div>
-
-                <!-- Restore Relaxing Soft Tissue -->
-                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-semibold text-[#1B6C6D]">Restore Lymphatic Drainage</h3>
-                        <div class="text-right">
-                            <span class="font-semibold text-lg">£60</span>
-                            <p class="text-sm text-gray-500">1 hour</p>
-                        </div>
-                    </div>
-                    <div class="relative mb-4">
-                        <div class="absolute top-2 left-2 bg-[#1B6C6D] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                            20% off first booking
-                        </div>
-                        <img src="aneck.jpeg" alt="Tension Release Massage Treatment" class="w-full h-48 object-cover rounded-lg mb-4">
-                    </div>
-                    <p class="text-gray-600">An energising and invigorating treatment designed to stimulate the lymphatic system and promote detoxification. This session begins with gentle lymphatic pumping techniques to encourage fluid movement and boost circulation, followed by a more dynamic remodelling massage focused on breaking down fatty deposits and improving the texture of the interstitial tissue.
-                        Perfect if you're concerned about areas such as the thighs, hips, tummy, or back of the arms — whether it's cellulite, puffiness, or stubborn weight.
-                        Feel lighter, refreshed, and more confident in your skin.</p>
-                </div>
-            </div>
-
-            
-
-            <!-- Book Now Button -->
-            <div class="text-center mt-12">
-                <a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ"
-                   target="_blank"
-                   class="inline-flex items-center px-8 py-4 bg-[#1B6C6D] text-white rounded-full hover:bg-[#155859] transition-colors font-semibold">
-                    Book Your Treatment Now
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </section>
-
-
-
-        <!-- Is this you? Section -->
-        <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
-            <h2 class="text-3xl font-bold mb-6 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
-                Is This For You?
-            </h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-                    <p class="text-lg text-gray-700">
-                        Are you an athlete looking to improve performance and prevent injuries?
-                    </p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-                    <p class="text-lg text-gray-700">
-                        Do you experience muscle tension or soreness from training?
-                    </p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-                    <p class="text-lg text-gray-700">
-                        Are you preparing for or recovering from a sporting event?
-                    </p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-                    <p class="text-lg text-gray-700">
-                        Do you want to maintain peak physical condition?
-                    </p>
-                </div>
-            </div>
-            <p class="text-xl text-center mt-8 font-semibold text-[#1B6C6D]">
-                Ready to transform your well-being? Book your treatment today.
-            </p>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="max-w-6xl mx-auto mb-20 bg-white p-8 rounded-2xl shadow-[0_20px_50px_rgba(27,108,109,0.1)] border-[#1B6C6D] border-t-4">
-            <h2 class="text-3xl font-bold mb-6 text-center text-black border-b-2 border-[#1B6C6D] pb-4 w-fit mx-auto">
-                Frequently Asked Questions
-            </h2>
-            <div class="space-y-4">
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
-                        <span class="text-lg font-semibold">What should I expect during a sports massage?</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="mt-2 hidden">
-                        <p class="text-gray-600">Sports massage is typically more intense than regular massage. We'll assess your needs, focus on specific muscle groups, and use techniques to enhance performance and recovery.</p>
-                    </div>
-                </div>
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
-                        <span class="text-lg font-semibold">How should I prepare for my treatment?</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="mt-2 hidden">
-                        <p class="text-gray-600">Arrive 10 minutes early, wear comfortable clothing, and avoid heavy meals before your treatment. For facials, please come with clean, makeup-free skin.</p>
-                    </div>
-                </div>
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
-                        <span class="text-lg font-semibold">What is your payment policy?</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="mt-2 hidden">
-                        <p class="text-gray-600">To secure your booking time, a 20% deposit is required upfront with the remainder paid once your treatment has finished.</p>
-                    </div>
-                </div>
-                <div class="border-b border-gray-200 pb-4">
-                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
-                        <span class="text-lg font-semibold">What is your cancellation policy?</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="mt-2 hidden">
-                        <p class="text-gray-600">We require 24 hours notice for cancellations. Late cancellations or no-shows may be subject to a fee.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-[#1B6C6D] text-white mt-20 border-t-2 border-white">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center md:justify-items-start">
-                <!-- Contact Info -->
-                <div class="w-full max-w-xs">
-                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
-                    <p class="mb-2">📱 07923 169525</p>
-                    <p class="mb-2">📧 info@restorewithangel.com</p>
-                    <p class="mb-2">📍 The Clique,<BR>
-                             100 Reading Road, <br>
-                        RG7 3YJ </p>
-                    <a href="https://www.instagram.com/restorewithangel/?igsh=MTZqYWp2YWZ2OWtyNA%3D%3D&utm_source=qr#" 
-                       target="_blank" 
-                       class="flex items-center hover:text-[#C2E6E3] transition-colors">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                        restorewithangel
-                    </a>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="w-full max-w-xs">
-                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#treatment-services" class="hover:text-[#C2E6E3] transition-colors">Services</a></li>
-                        <li><a href="https://bookings.gettimely.com/restorewithangel/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F142820%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue%252526fbclid%25253dPAZXh0bgNhZW0CMTEAAadkspiQ7Wo4pSuea6oK0C5xsu9-Znnt7wsvHRZv9zsOxtX338xvMaR_lPPlYg_aem_zENlQ29r2MyPfRPcRN7xgQ" class="hover:text-[#C2E6E3] transition-colors">Book Appointment</a></li>
-                        <li><a href="#" class="hover:text-[#C2E6E3] transition-colors">FAQs</a></li>
-                    </ul>
-                </div>
-
-                <!-- Business Hours -->
-                <div class="w-full max-w-xs">
-                    <h3 class="text-xl font-semibold mb-4">Business Hours</h3>
-                    <ul class="space-y-2">
-                        <li>Monday - Friday: 9:00 AM - 8:00 PM</li>
-                        <li>Saturday: 10:00 AM - 6:00 PM</li>
-                        <li>Sunday: Closed</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="border-t border-white/20 mt-8 pt-8 text-center">
-                <p class="text-sm">© 2024 Restore with Angel. All rights reserved.</p>
-            </div>
+                <p class="text-xs uppercase tracking-widest text-brand-light">Save £45</p>
+              </div>
+            </dl>
+            <p class="mt-6 text-xs text-slate-400">Package appointments can be shared within the same household and are valid for 6 months from purchase.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    
+    <section class="mx-auto max-w-6xl px-6" id="approach">
+      <div class="section-shell grid gap-10 p-10 lg:grid-cols-[1.15fr_0.85fr]">
+        <div>
+          <p class="text-sm uppercase tracking-[0.4em] text-brand-light">The Resolve Method</p>
+          <h2 class="mt-4 text-3xl font-semibold text-white">A clear journey from pain to performance.</h2>
+          <p class="mt-4 text-slate-300">Every plan follows a simple structure so you always know what happens next and why. Expect honest conversations, measurable milestones and accountability all the way through.</p>
+          <div class="mt-8 space-y-5">
+            <div class="rounded-2xl border border-brand/30 bg-night/60 p-5">
+              <p class="text-sm font-semibold uppercase tracking-widest text-brand-light">Phase 1 - Assess</p>
+              <p class="mt-2 text-white">Detailed history, posture &amp; movement testing, neurological screens and palpation to identify the driver of your pain.</p>
+            </div>
+            <div class="rounded-2xl border border-brand/30 bg-night/60 p-5">
+              <p class="text-sm font-semibold uppercase tracking-widest text-brand-light">Phase 2 - Reset</p>
+              <p class="mt-2 text-white">Hands-on therapy combined with mobility drills and breath work to calm symptoms while restoring range of motion.</p>
+            </div>
+            <div class="rounded-2xl border border-brand/30 bg-night/60 p-5">
+              <p class="text-sm font-semibold uppercase tracking-widest text-brand-light">Phase 3 - Strengthen</p>
+              <p class="mt-2 text-white">Tailored loading plans, progressive foundations and technique coaching so you re-enter sport feeling stable and confident.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative overflow-hidden rounded-3xl border border-white/10">
+          <img src="leg6.jpeg" alt="Client completing rehabilitation exercises" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-night/90 via-night/20 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/10 p-5">
+            <p class="text-xs uppercase tracking-[0.4em] text-brand-light">Track your wins</p>
+            <p class="mt-2 text-lg font-semibold text-white">Session summaries, home plans and video demos are delivered straight after each visit to keep you in control.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const roastButtons = document.querySelectorAll('#roastButton, #headerRoastButton');
-            // const roastModal = document.getElementById('roastModal');
-            // const closeModal = document.getElementById('closeModal');
+    <section class="mx-auto max-w-6xl px-6" id="gallery">
+      <div class="section-shell p-10">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Inside Resolve</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white">Take a look around the clinic.</h2>
+            <p class="mt-3 text-slate-300">Designed to keep you calm, inspired and ready to move.</p>
+          </div>
+          <div class="flex gap-3">
+            <button id="gallery-prev" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand">Prev</button>
+            <button id="gallery-next" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand">Next</button>
+          </div>
+        </div>
+        <div class="mt-8 overflow-hidden rounded-3xl border border-white/10">
+          <div id="gallery-track" class="flex transition-transform duration-700 ease-in-out">
+            <figure class="relative min-w-full">
+              <img src="room.jpeg" alt="Private treatment room" class="h-[420px] w-full object-cover" />
+              <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">Calm private treatment rooms for honest conversations.</figcaption>
+            </figure>
+            <figure class="relative min-w-full">
+              <img src="leg.jpeg" alt="Manual therapy close up" class="h-[420px] w-full object-cover" />
+              <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">Evidence-led manual therapy to unlock range and reduce pain.</figcaption>
+            </figure>
+            <figure class="relative min-w-full">
+              <img src="plant.jpeg" alt="Recovery corner" class="h-[420px] w-full object-cover" />
+              <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">Space to decompress, learn and focus on recovery habits.</figcaption>
+            </figure>
+            <figure class="relative min-w-full">
+              <img src="leg6.jpeg" alt="Strength coaching" class="h-[420px] w-full object-cover" />
+              <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">Load progressions that put you back on the pitch confidently.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            roastButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    roastModal.classList.remove('hidden');
-                });
-            });
+    <section class="mx-auto max-w-6xl px-6" id="testimonials">
+      <div class="section-shell p-10">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Client experience</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white">Trusted by athletes, professionals and weekend warriors.</h2>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <div class="flex gap-3">
+              <button id="testimonial-prev" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand">Prev</button>
+              <button id="testimonial-next" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand">Next</button>
+            </div>
+            <a href="https://www.google.com/search?sca_esv=7cb5a2c0938f91b5&amp;rlz=1C5CHFA_enGB775GB775&amp;sxsrf=AE3TifOoR0Mn9wRqz4AHD400BV8Axww9Bw:1764180228098&amp;si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E51QPnVN7osPe5yOF0ZZWw5Ifdh-RjZVy-obqQL8Aaw9_lBdaaL5Y4Iz2_3Yue052JmT_dEUOdcOy76JlaIZbjBdz8CqtCzC3syAw8pb84hY8WS5OA==&amp;q=Resolve+Sports+Therapy+Reviews&amp;sa=X&amp;ved=2ahUKEwjv7cK-s5CRAxUJdUEAHUq1BvMQ0bkNegQIJhAE&amp;biw=803&amp;bih=754&amp;dpr=2" target="_blank" rel="noopener" class="rounded-full border border-brand/40 px-4 py-2 text-sm font-semibold text-brand-light transition hover:bg-brand hover:text-night">Read all Google reviews</a>
+          </div>
+        </div>
+        <div class="relative mt-8 min-h-[320px]">
+          <article class="testimonial-card absolute inset-0 rounded-3xl border border-white/10 bg-white/5 p-6" data-testimonial>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Google review · &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="mt-4 text-lg font-semibold text-white">“I went to see Ice after suffering from mid to low back pain for some time. After explaining the symptoms, Ice identified the cause and treated it. My movement improved massively—highly recommend Resolve Sports Therapy.”</p>
+            <p class="mt-6 text-sm uppercase tracking-widest text-slate-300">Myles Vaughan</p>
+          </article>
+          <article class="testimonial-card absolute inset-0 rounded-3xl border border-white/10 bg-white/5 p-6" data-testimonial>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Google review · &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="mt-4 text-lg font-semibold text-white">“I went to Resolve for neck and back pain from long days at the desk. After two sessions my pain reduced significantly and I can now work pain free. Would highly recommend!”</p>
+            <p class="mt-6 text-sm uppercase tracking-widest text-slate-300">Milli Westlake</p>
+          </article>
+          <article class="testimonial-card absolute inset-0 rounded-3xl border border-white/10 bg-white/5 p-6" data-testimonial>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Google review · &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="mt-4 text-lg font-semibold text-white">“I’ve had knee trouble for over 15 years and after 30 minutes with Ice it felt the best it has since the original injury. He set out a clear plan for the next few weeks—highly recommend a visit.”</p>
+            <p class="mt-6 text-sm uppercase tracking-widest text-slate-300">Rob Arnott</p>
+          </article>
+          <article class="testimonial-card absolute inset-0 rounded-3xl border border-white/10 bg-white/5 p-6" data-testimonial>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Google review · &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="mt-4 text-lg font-semibold text-white">“Visited after feeling sore in my legs following football. Ice eased the tight spots in my calves and hamstrings and they feel so much better now. Will definitely visit again.”</p>
+            <p class="mt-6 text-sm uppercase tracking-widest text-slate-300">Tayseer Alam</p>
+          </article>
+          <article class="testimonial-card absolute inset-0 rounded-3xl border border-white/10 bg-white/5 p-6" data-testimonial>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Google review · &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="mt-4 text-lg font-semibold text-white">“Very friendly and got straight into resolving my calf issues. Could feel the difference instantly. Highly recommended.”</p>
+            <p class="mt-6 text-sm uppercase tracking-widest text-slate-300">David Watkins</p>
+          </article>
+          <article class="testimonial-card absolute inset-0 rounded-3xl border border-white/10 bg-white/5 p-6" data-testimonial>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Google review · &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+            <p class="mt-4 text-lg font-semibold text-white">“Great diagnosis of what I thought was a muscle tear. Ice explained exactly what was going on and how to tackle it—highly recommend.”</p>
+            <p class="mt-6 text-sm uppercase tracking-widest text-slate-300">Andrew Williams</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            closeModal.addEventListener('click', () => {
-                roastModal.classList.add('hidden');
-            });
+    <section class="mx-auto max-w-6xl px-6" id="location">
+      <div class="section-shell p-10 text-center">
+        <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Visit us</p>
+        <h2 class="mt-4 text-3xl font-semibold text-white">Where to find us?</h2>
+        <p class="mt-6 text-lg text-slate-200"><a href="https://www.google.com/maps/place/61+Sherwood+Rd,+Winnersh,+Wokingham+RG41+5NH" target="_blank" rel="noopener" class="text-brand-light underline">61 Sherwood Road, Winnersh, Wokingham<br />RG41 5NH</a></p>
+        <p class="mt-4 text-slate-300">We are located within the parade of shops with the entrance at the rear of Winnersh Village Barbers.</p>
+        <p class="mt-4 text-slate-300">Free on-road parking is available.</p>
+      </div>
+    </section>
 
-            roastModal.addEventListener('click', (e) => {
-                if (e.target === roastModal) {
-                    roastModal.classList.add('hidden');
-                }
-            });
-        });
+    <section class="mx-auto max-w-6xl px-6" id="faq">
+      <div class="section-shell p-10">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-brand-light">FAQ</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white">Everything you need to know before booking.</h2>
+          </div>
+          <p class="max-w-xl text-slate-300">If you still have questions, send us a message below and we will respond the same day.</p>
+        </div>
+        <div class="mt-8 space-y-4">
+          <article class="faq-item rounded-3xl border border-white/10 bg-white/5 p-6">
+            <button class="flex w-full items-center justify-between text-left text-lg font-semibold text-white">
+              <span>What is your cancellation policy?</span>
+              <span class="text-brand-light">+</span>
+            </button>
+            <div class="faq-answer text-slate-200">
+              <p class="pt-4 text-sm">We have a 24-hour cancellation policy. If you need to cancel or reschedule, please message via WhatsApp or email using the contact details below at least 24 hours before your appointment time. Missed or late-cancelled appointments are charged at 50% of the appointment fee.</p>
+            </div>
+          </article>
+          <article class="faq-item rounded-3xl border border-white/10 bg-white/5 p-6">
+            <button class="flex w-full items-center justify-between text-left text-lg font-semibold text-white">
+              <span>Do I need to be an athlete?</span>
+              <span class="text-brand-light">+</span>
+            </button>
+            <div class="faq-answer text-slate-200">
+              <p class="pt-4 text-sm">Not at all. Many clients spend their day at a desk or driving for work. We tailor programming and load management to your lifestyle and equipment access, whether that is a fully kitted gym or your living room.</p>
+            </div>
+          </article>
+          <article class="faq-item rounded-3xl border border-white/10 bg-white/5 p-6">
+            <button class="flex w-full items-center justify-between text-left text-lg font-semibold text-white">
+              <span>What happens in the first session?</span>
+              <span class="text-brand-light">+</span>
+            </button>
+            <div class="faq-answer text-slate-200">
+              <p class="pt-4 text-sm">We take a full history, assess movement, run through orthopedic tests and outline the plan. You will also receive treatment and a simple take-home programme so you start making progress right away.</p>
+            </div>
+          </article>
+          <article class="faq-item rounded-3xl border border-white/10 bg-white/5 p-6">
+            <button class="flex w-full items-center justify-between text-left text-lg font-semibold text-white">
+              <span>How often will I need to visit?</span>
+              <span class="text-brand-light">+</span>
+            </button>
+            <div class="faq-answer text-slate-200">
+              <p class="pt-4 text-sm">Frequency depends on your goals, training load and how your body responds. We decide together after the initial assessment and adjust as you improve.</p>
+            </div>
+          </article>
+          <article class="faq-item rounded-3xl border border-white/10 bg-white/5 p-6">
+            <button class="flex w-full items-center justify-between text-left text-lg font-semibold text-white">
+              <span>Do you offer home visits?</span>
+              <span class="text-brand-light">+</span>
+            </button>
+            <div class="faq-answer text-slate-200">
+              <p class="pt-4 text-sm">Home visits are available but need to be arranged via WhatsApp or email as they require extra planning and incur an additional cost based on travel distance and appointment type.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        function toggleFAQ(element) {
-            const answer = element.nextElementSibling;
-            const icon = element.querySelector('svg');
-            answer.classList.toggle('hidden');
-            icon.classList.toggle('rotate-180');
+    <section class="mx-auto max-w-6xl px-6" id="contact">
+      <div class="section-shell p-10 text-center">
+        <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Visit Resolve</p>
+        <h2 class="mt-4 text-3xl font-semibold text-white">Ready to move better?</h2>
+        <p class="mt-3 text-slate-300">Clinic based in Winnersh, Wokingham with flexible appointments and home visit options on request.</p>
+        <div class="mt-6 space-y-3 text-base text-slate-200">
+          <p><span class="font-semibold text-white">Whatsapp:</span> <a href="https://wa.me/447468516971" class="text-brand-light underline" target="_blank" rel="noopener">07468516971</a></p>
+          <p><span class="font-semibold text-white">Email:</span> <a href="mailto:resolvesporttherapy@outlook.com" class="text-brand-light underline">resolvesporttherapy@outlook.com</a></p>
+        </div>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="https://resolve-sports-therapy.uk2.cliniko.com/bookings" target="_blank" rel="noopener" class="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-brand-light hover:text-night">Book on Cliniko</a>
+          <a href="#faq" data-scroll class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-brand">View FAQs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="border-t border-white/10 bg-night/90 px-6 py-16 text-slate-200">
+    <div class="mx-auto max-w-5xl space-y-6">
+      <div>
+        <p class="text-sm uppercase tracking-[0.4em] text-brand-light">Privacy policy</p>
+        <h2 class="mt-4 text-3xl font-semibold text-white">Your information, your control.</h2>
+      </div>
+      <div class="space-y-4 text-sm leading-relaxed">
+        <div>
+          <p class="font-semibold text-white">Who we are</p>
+          <p class="mt-1">Resolve Sports Therapy is a private clinic helping everyone from athletes to office workers regain movement and improve day-to-day quality of life.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">Who we share your data with</p>
+          <p class="mt-1">Your data remains confidential between you and your therapist. We comply with GDPR and patient confidentiality guidelines. Information is only shared with another party if you explicitly nominate a trustee.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">How long we retain your data</p>
+          <p class="mt-1">Records stay on our system until you request removal, keeping you in full control. If you are discharged or simply decide you no longer want us to retain your data, we will delete it promptly.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">What rights you have over your data</p>
+          <p class="mt-1">You may withdraw consent for treatment or request data removal at any time. If you return after removal, you will be treated as a new patient and billed at the new patient rate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 bg-night/80 py-10 text-center text-xs text-slate-400">
+    <p>&copy; <span id="year"></span> Resolve Sports Therapy - Injury clinic in Winnersh, Wokingham.</p>
+    <p class="mt-2">Website by UC23.</p>
+  </footer>
+
+  <a href="https://wa.me/447468516971" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" id="whatsapp-float">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="white" aria-hidden="true">
+      <path d="M16 3C9.373 3 4 8.373 4 15c0 2.65.87 5.1 2.36 7.09L4 29l7.18-2.31C12.97 27.56 14.45 28 16 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.36 0-2.68-.27-3.91-.8l-.28-.12-4.27 1.37 1.4-4.16-.18-.29C7.27 18.01 7 16.53 7 15c0-5.06 4.13-9.18 9.19-9.18S25.37 9.94 25.37 15c0 5.06-4.13 9.18-9.19 9.18zm5.13-6.47c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.47.07-.72.34-.25.27-.97.95-.97 2.32 0 1.37.99 2.7 1.13 2.89.14.19 1.95 2.98 4.74 4.06.66.27 1.18.43 1.58.55.66.21 1.26.18 1.73.11.53-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/>
+    </svg>
+  </a>
+
+  <script>
+    const galleryTrack = document.getElementById('gallery-track');
+    const gallerySlides = Array.from(galleryTrack.children);
+    let galleryIndex = 0;
+    function updateGallery() {
+      galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
+    }
+    document.getElementById('gallery-prev').addEventListener('click', () => {
+      galleryIndex = (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
+      updateGallery();
+    });
+    document.getElementById('gallery-next').addEventListener('click', () => {
+      galleryIndex = (galleryIndex + 1) % gallerySlides.length;
+      updateGallery();
+    });
+    setInterval(() => {
+      galleryIndex = (galleryIndex + 1) % gallerySlides.length;
+      updateGallery();
+    }, 7000);
+
+    const testimonials = Array.from(document.querySelectorAll('[data-testimonial]'));
+    let testimonialIndex = 0;
+    function showTestimonial(index) {
+      testimonials.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+    }
+    showTestimonial(testimonialIndex);
+    document.getElementById('testimonial-prev').addEventListener('click', () => {
+      testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(testimonialIndex);
+    });
+    document.getElementById('testimonial-next').addEventListener('click', () => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      showTestimonial(testimonialIndex);
+    });
+    setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      showTestimonial(testimonialIndex);
+    }, 8000);
+
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      const button = item.querySelector('button');
+      const icon = button.querySelector('span:last-child');
+      button.addEventListener('click', () => {
+        item.classList.toggle('active');
+        if (icon) {
+          icon.textContent = item.classList.contains('active') ? '-' : '+';
         }
+      });
+    });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('massageVideo');
-            // Define your segments as [start, end] in seconds
-            const segments = [
-                [0, 4],
-                [6, 9],
-                [10, 14],
-                [24, 27]
-            ];
-            let currentSegment = 0;
-
-            // When the video is ready, jump to the first segment
-            video.addEventListener('loadedmetadata', () => {
-                video.currentTime = segments[0][0];
-                video.play();
+    document.querySelectorAll('a[data-scroll]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          event.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            window.scrollTo({
+              top: target.getBoundingClientRect().top + window.scrollY - 80,
+              behavior: 'smooth'
             });
+          }
+          menuPanel.classList.add('hidden');
+        }
+      });
+    });
 
-            // On time update, check if we've reached the end of the current segment
-            video.addEventListener('timeupdate', () => {
-                if (video.currentTime >= segments[currentSegment][1]) {
-                    // Move to the next segment, or loop back to the first
-                    currentSegment = (currentSegment + 1) % segments.length;
-                    video.currentTime = segments[currentSegment][0];
-                    video.play();
-                }
-            });
+    const floatingCta = document.getElementById('floating-cta');
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuPanel = document.getElementById('menu-panel');
+    menuToggle.addEventListener('click', () => {
+      menuPanel.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (event) => {
+      if (!menuPanel.contains(event.target) && !menuToggle.contains(event.target)) {
+        menuPanel.classList.add('hidden');
+      }
+    });
 
-            // Optional: If the user manually seeks, snap to the start of the nearest segment
-            video.addEventListener('seeking', () => {
-                let found = false;
-                for (let i = 0; i < segments.length; i++) {
-                    if (video.currentTime >= segments[i][0] && video.currentTime < segments[i][1]) {
-                        currentSegment = i;
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    // If not in any segment, jump to the start of the first segment
-                    currentSegment = 0;
-                    video.currentTime = segments[0][0];
-                }
-            });
-        });
-
-        
-    </script>
-
-    
-
-    <script>
-        document.addEventListener('scroll', function() {
-            const mobileLogo = document.getElementById('mobileLogo');
-            if (window.scrollY > 50) {
-                mobileLogo.classList.add('hide');
-            } else {
-                mobileLogo.classList.remove('hide');
-            }
-        });
-    </script>
-
-    
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
